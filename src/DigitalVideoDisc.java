@@ -13,12 +13,15 @@ public class DigitalVideoDisc {
     }
     public DigitalVideoDisc( String category, String title,  float cost){
         ++nbDigitalVideoDiscs;
+        id = (int)Math.random()*1000;
+
         this.setTitle(title);
         this.setCategory(category);
         this.setCost(cost);
     }
     public DigitalVideoDisc(String director, String category,String title,  float cost ){
         ++nbDigitalVideoDiscs;
+        id = (int)Math.random()*1000;
         this.setTitle(title);
         this.setDirector(director);
         this.setCost(cost);
@@ -26,6 +29,7 @@ public class DigitalVideoDisc {
     }
     public DigitalVideoDisc( String title, String category, String director, int length,float cost){
         ++nbDigitalVideoDiscs;
+        id = (int)Math.random()*1000;
         this.setTitle(title);
         this.setLength(length);
         this.setCategory(category);
