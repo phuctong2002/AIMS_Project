@@ -72,7 +72,20 @@ public class DigitalVideoDisc {
         return cost;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setCost(float cost) {
         this.cost = cost;
     }
+    public void myToString(){
+        System.out.println( "DVD - " + title  + " - " + category + " - " + director + " - " + length + " : " + cost +"$");
+    }
+
+
 }
