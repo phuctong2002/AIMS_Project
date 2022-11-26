@@ -32,4 +32,37 @@ public class Cart {
         }
         return sum;
     }
+
+    public void print(){
+        for( int i = 0; i < qtyOrdered; ++i){
+            itemsOrdered[i].myToString();
+        }
+        System.out.println("Total cost : " + totalCost());
+    }
+
+    public void searchById( int id){
+        int qty = 0;
+        for( int i = 0; i < qtyOrdered; ++i){
+            if( id == itemsOrdered[i].getId() ){
+                ++qty;
+                itemsOrdered[i].myToString();
+            }
+        }
+        if( qty == 0){
+            System.out.println("Not found");
+        }
+    }
+
+    public void searchByTitle( String title){
+        int qty = 0;
+        for( int i = 0; i < qtyOrdered; ++i ){
+            if( title == itemsOrdered[i].getTitle() ){
+                ++qty;
+                itemsOrdered[i].myToString();
+            }
+        }
+        if( qty == 0 ){
+            System.out.println("Not found");
+        }
+    }
 }
