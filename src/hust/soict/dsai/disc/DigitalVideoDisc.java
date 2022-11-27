@@ -1,3 +1,5 @@
+package hust.soict.dsai.disc;
+
 public class DigitalVideoDisc {
     private static int nbDigitalVideoDiscs = 0;
     private int id;
