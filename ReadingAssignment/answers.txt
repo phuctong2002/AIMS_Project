@@ -1,0 +1,2 @@
+
+- Khi muốn hạn chế truy cập trái sửa đối giá trị trái phép của các thuộc tính của đối tượng làm cho những thuộc tính của đối tượng có những giá trị gây hạn cho hệ thống.
