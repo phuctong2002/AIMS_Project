@@ -1,6 +1,6 @@
-package hust.soict.dsai.cart;
+package hust.soict.dsai.aims.cart;
 
-import hust.soict.dsai.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -10,7 +10,7 @@ public class Cart {
 
     public void addDigitalVideoDisc(DigitalVideoDisc disc){
         if( qtyOrdered == MAX_NUMBERS_ORDERED){
-            System.out.println("hust.soict.dsai.cart.Cart full");
+            System.out.println("hust.soict.dsai.aims.cart.Cart full");
         }else{
             itemsOrdered[qtyOrdered] = disc;
             ++qtyOrdered;
