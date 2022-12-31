@@ -3,51 +3,66 @@ package hust.soict.dsai.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book extends Media{
+public class Book extends Media {
 
     private List<String> authors = new ArrayList<String>();
+
     public Book(){
-        super();
+
     }
-    public Book( int id, String title, String category, float cost, String author){
-        super( id, title, category, cost);
-        authors.add(author);
-    }
-    public void addAuthor( String author){
-        int l = authors.size();
-        for( int i = 0; i < l; ++i){
-            if( author == authors.get(i)){
-                System.out.println("Tac gia da ton tai");
-                return;
+
+    public void addAuthor( String authorName){
+        int flag = 0;
+        for( String author : authors){
+            if( author.equals(authorName)){
+                flag = 1;
             }
         }
-        authors.add( author);
-    }
-    public void removeAuthor( String author){
-        int l = authors.size();
-        int index = authors.indexOf(author);
-        if( index == -1){
-            System.out.println("Khong ton tai");
+        if( flag == 1){
+
+            System.out.println("Author exist ");
         }else{
-            authors.remove( author);
+            authors.add( authorName);
+            System.out.println("Add successfully");
+        }
+    }
+    public void removeAuthor( String authorName){
+        int flag = 0;
+        int length = authors.size();
+        for( int i = 0; i < length; ++i){
+            if( authors.get(i).equals(authorName)){
+                authors.remove( authors.get(i));
+                flag = 1;
+                break;
+            }
+        }
+        if( flag == 1){
+            System.out.println("Remove successfully");
+        }else System.out.println("Author don't exist");
+    }
+
+    public Book(int id, String title, String category) {
+        super( id, title, category);
+    }
+    public void show(){
+        for( String author: authors){
+            System.out.println(author);
         }
     }
 
 
-    public static void main(String[] args){
-        Book book1 = new Book();
-        book1.addAuthor("Tong Phuc");
-        book1.addAuthor("Tran Tuan");
-        book1.addAuthor("Thanh Vinh");
+    @Override
+    public String toString(){
+        return "Book - " + getTitle() + " - " + getCategory() + " - " + getCost();
+    }
+
+    public static void main( String[] args){
+        Book book1 = new Book( 1, "vat li dai cuong", "Physic");
+        book1.addAuthor("Phuc Tong");
+        book1.addAuthor("Duc Vuong");
+        book1.show();
+        book1.addAuthor("Phuc Tong");
         book1.removeAuthor("Tong Phuc");
-    }
-
-
-    public void myToString(){
-        System.out.print( "Id : "  + getId() + " - Title : " + getTitle() + " - Category: " + getCategory() + " - Cost : " + getCost()+ " - Author: ");
-        for( int i = 0; i < authors.size(); ++i){
-            System.out.print( authors.get(i) + " ");
-        }
-        System.out.println("");
+        book1.removeAuthor("Duc Vuong");
     }
 }

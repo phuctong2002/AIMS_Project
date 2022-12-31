@@ -1,47 +1,47 @@
 package hust.soict.dsai.aims.store;
 
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
-import hust.soict.dsai.disc.DigitalVideoDisc;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 public class Store {
-    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
-    public void addMedia( Media media){
-        for( int i = 0; i < itemsInStore.size(); ++i){
-            if( itemsInStore.get(i).equals( media)){
-                System.out.println("Item exist");
-                return ;
-            }
+    private List<Media> itemsInStore = new ArrayList<Media>();
+
+
+    public void addMedia(Media media) {
+        if( itemsInStore.contains(media)){
+            System.out.println("Item exist in store");
+            return;
         }
-        itemsInStore.add(media);
+        itemsInStore.add( media);
+        System.out.println( "Add successfully");
     }
 
     public void removeMedia( Media media){
-        for( int i = 0; i < itemsInStore.size(); i++){
-            if( itemsInStore.get(i).equals( media)){
-                itemsInStore.remove(i);
-                return;
-            }
+        if( itemsInStore.contains( media)){
+            itemsInStore.remove( itemsInStore.indexOf(media));
+            System.out.println("Remove successfully");
+        }else{
+            System.out.println("Item not found in store");
         }
-        System.out.println("Item not found");
+    }
+    public void printList(){
 
-    }
-    public void showStore(){
-        for( int i = 0;  i < itemsInStore.size(); i++){
-            System.out.println("Title : " + itemsInStore.get(i).getTitle());
+        for( Media media: itemsInStore){
+            System.out.println( media.toString());
         }
     }
+
     public Media searchByTitle( String title){
         for( int i = 0; i < itemsInStore.size(); ++i){
-            if( itemsInStore.get(i).getTitle().equals( title) ){
-                itemsInStore.get(i).myToString();
+            if( itemsInStore.get(i).getTitle().equals(title)){
                 return itemsInStore.get(i);
             }
         }
-        System.out.println("Item not found");
+        System.out.println("Media don't exist");
         return null;
     }
+
 }
