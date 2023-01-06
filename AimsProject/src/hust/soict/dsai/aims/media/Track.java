@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.PlayerException;
+
 import javax.swing.plaf.synth.SynthTextAreaUI;
 
 public class Track implements Playable {
@@ -23,9 +25,13 @@ public class Track implements Playable {
     }
 
     @Override
-    public void play() {
-        System.out.println("Playing Track : " + this.getTitle());
-        System.out.println("Track length : " + this.getLength());
+    public void play() throws PlayerException {
+        if( getLength() > 0){
+            System.out.println("Playing Track : " + this.getTitle());
+            System.out.println("Track length : " + this.getLength());
+        }else
+            throw new PlayerException("ERROR: Track length is non-positive");
+
     }
 
 

@@ -18,13 +18,13 @@ public class StoreTest {
         store.addMedia(dvd2);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Animation", "Aladin", 18.99f);
         store.addMedia(dvd3);
-        Book book1 = new Book(1, "vat li", "Physic");
+        Book book1 = new Book( "vat li", "Physic", 23);
         store.addMedia(book1);
-        Book book2 = new Book( 2, "vat li", "Physic");
+        Book book2 = new Book( "vat li", "Physic", 11);
         store.addMedia(book2);
         List<Media> media = new ArrayList<Media>();
         media.add( new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
-        media.add( new Book( 2, "vat li", "Physic"));
+        media.add( new Book(  "vat li", "Physic", 10));
         media.add( new CompactDisc( 1, "CD1", "Music USA", 1000));
         for( Media a : media){
             System.out.println( a.toString());

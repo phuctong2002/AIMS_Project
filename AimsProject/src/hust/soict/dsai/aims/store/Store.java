@@ -1,6 +1,5 @@
 package hust.soict.dsai.aims.store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 
 import java.util.ArrayList;
@@ -8,8 +7,6 @@ import java.util.List;
 
 public class Store {
     private List<Media> itemsInStore = new ArrayList<Media>();
-
-
     public void addMedia(Media media) {
         if( itemsInStore.contains(media)){
             System.out.println("Item exist in store");
@@ -44,4 +41,7 @@ public class Store {
         return null;
     }
 
+    public List<Media> getItemsInStore() {
+        return itemsInStore;
+    }
 }

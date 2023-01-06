@@ -41,13 +41,16 @@ public class Book extends Media {
         }else System.out.println("Author don't exist");
     }
 
-    public Book(int id, String title, String category) {
-        super( id, title, category);
+    public Book( String title, String category, float cost) {
+        super(  title, category, cost);
     }
-    public void show(){
-        for( String author: authors){
-            System.out.println(author);
-        }
+
+    public Book( int id, String title, String category, float cost, String author){
+        setId(id);
+        setTitle( title);
+        setCategory(category);
+        setCost(cost);
+        authors.add(author);
     }
 
 
@@ -57,10 +60,9 @@ public class Book extends Media {
     }
 
     public static void main( String[] args){
-        Book book1 = new Book( 1, "vat li dai cuong", "Physic");
+        Book book1 = new Book(  "vat li dai cuong", "Physic", 23);
         book1.addAuthor("Phuc Tong");
         book1.addAuthor("Duc Vuong");
-        book1.show();
         book1.addAuthor("Phuc Tong");
         book1.removeAuthor("Tong Phuc");
         book1.removeAuthor("Duc Vuong");

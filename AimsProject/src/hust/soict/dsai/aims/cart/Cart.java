@@ -1,34 +1,28 @@
 package hust.soict.dsai.aims.cart;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import javax.naming.LimitExceededException;
 import java.util.Collections;
-import java.util.List;
 
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
 
-    private List<Media> itemsOrdered = new ArrayList<Media>();
-
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     public void addMedia( Media media){
-        if( itemsOrdered.size() == MAX_NUMBERS_ORDERED){
-            System.out.println("Cart full");
-        }else{
-//            for( int i = 0; i < itemsOrdered.size(); ++i){
-//                if( itemsOrdered.get(i).equals( media)){
-//                    System.out.println("DVD exist");
-//                    return;
-//                }
-//            }
+        try{
+            if( itemsOrdered.size() == MAX_NUMBERS_ORDERED)
+                throw new LimitExceededException("Cart full");
             if( itemsOrdered.contains(media)){
-                System.out.println("Media exist");
-                return;
+//                System.out.println("Media exist");
+                throw new Exception("Media exist");
             }
             itemsOrdered.add(media);
+        }catch ( Exception e){
+            System.out.println( e.getMessage());
         }
     }
     public void removeMedia( Media media){
@@ -59,27 +53,35 @@ public class Cart {
     }
 
 
-    public void searchById( int id){
+    public ObservableList<Media> searchById( int id){
+        ObservableList<Media> itemSearchById = FXCollections.observableArrayList();
+        int flags = 0;
         for( Media media : itemsOrdered){
             if( media.getId() == id){
                 System.out.println( media.toString());
-                return;
+                itemSearchById.add( media );
+                flags = 1;
             }
         }
-        System.out.println("Not found");
+        if( flags == 0)
+            System.out.println("Not found");
+        return itemSearchById;
     }
 
-    public void searchByTitle( String title){
+    public ObservableList<Media> searchByTitle( String title){
         int flag = 0;
+        ObservableList<Media> itemSearchByTitle = FXCollections.observableArrayList();
         for( Media media : itemsOrdered){
             if( media.getTitle().equals( title)){
                 System.out.println( media.toString());
+                itemSearchByTitle.add(media);
                 flag = 1;
             }
         }
         if( flag == 0){
             System.out.println("Not found");
         }
+        return itemSearchByTitle;
     }
 
     public void sortByTitleCost(){
@@ -92,4 +94,9 @@ public class Cart {
     public void emptyCart(){
         itemsOrdered.clear();
     }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
 }
